@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roadmap — NCDMS</title>
+  <meta name="description" content="Current status and planned phases for the NCDMS OpenMRS nephrology project." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        NCDMS
+        <span class="brand-sub">OpenMRS Nephrology</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="roadmap.html" aria-current="page">Roadmap</a>
+        <a href="contribute.html">Contribute</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-eyebrow">Where things stand</p>
+      <h1>From server setup to a working clinical record</h1>
+      <p class="hero-lede">
+        NCDMS is being built in phases, starting with the foundational
+        OpenMRS deployment and core clinical concepts, then layering on
+        nephrology-specific forms, dashboards, and finally the dialysis
+        operational modules.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">Progress</p>
+      <h2>Phases of the build</h2>
+
+      <ul class="roadmap-list">
+        <li class="roadmap-item">
+          <span class="roadmap-phase">Phase 1</span>
+          <span class="roadmap-status done">Done</span>
+          <div class="roadmap-body">
+            <h3>Server &amp; platform setup</h3>
+            <p>
+              OpenMRS 3 deployed on a university server via Docker Compose,
+              with automated daily database backups, multi-account access
+              for the core team and an external consultant, and resolution
+              of early deployment issues (reverse proxy configuration,
+              container health).
+            </p>
+          </div>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-phase">Phase 2</span>
+          <span class="roadmap-status active">In progress</span>
+          <div class="roadmap-body">
+            <h3>Concept dictionary &amp; core configuration</h3>
+            <p>
+              Gap analysis of OpenMRS concepts against nephrology and
+              dialysis data needs, sourcing missing concepts from CIEL via
+              OpenConceptLab, and configuring provider accounts and roles
+              for clinical staff.
+            </p>
+          </div>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-phase">Phase 3</span>
+          <span class="roadmap-status active">In progress</span>
+          <div class="roadmap-body">
+            <h3>Nephrology clinical forms</h3>
+            <p>
+              Custom O3 forms for the clinic visit, starting with lab trend
+              capture — serum creatinine with automatic eGFR calculation
+              (CKD-EPI 2021) and CKD stage classification — and a patient
+              chart summary widget showing lab trends over time.
+            </p>
+          </div>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-phase">Phase 4</span>
+          <span class="roadmap-status">Planned</span>
+          <div class="roadmap-body">
+            <h3>Remaining clinical forms</h3>
+            <p>
+              Migrating the existing Google Forms-based data collection
+              (currently around ten forms covering different aspects of the
+              clinic) into structured O3 forms, prioritising the forms used
+              most often in day-to-day clinic visits.
+            </p>
+          </div>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-phase">Phase 5</span>
+          <span class="roadmap-status">Planned</span>
+          <div class="roadmap-body">
+            <h3>Dialysis unit modules</h3>
+            <p>
+              Companion modules for the dialysis side of the unit: session
+              recording, vascular access tracking, a bed/chair allocation
+              dashboard, and a priority queue for patients.
+            </p>
+          </div>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-phase">Phase 6</span>
+          <span class="roadmap-status">Planned</span>
+          <div class="roadmap-body">
+            <h3>Scheduling, notifications &amp; reporting</h3>
+            <p>
+              Automated appointment scheduling with SMS reminders, and
+              clinic-level reporting and registry support for research and
+              Ministry of Health reporting needs.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">A note on scope</p>
+      <h2>This roadmap will change</h2>
+      <p class="section-intro">
+        This is a live clinical informatics project shaped by a real unit's
+        needs, so priorities shift as the team learns more about what's
+        practical and what's most useful day to day. The phases above
+        describe a current best guess at sequencing, not a fixed plan. If
+        you're interested in working on something that isn't listed here,
+        get in touch — see the <a href="contribute.html">Contribute</a> page.
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-text">NCDMS — Nephrology Clinic &amp; Dialysis Management System. Built on OpenMRS.</p>
+      <div class="footer-links">
+        <a href="architecture.html">Architecture</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="contribute.html">Contribute</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

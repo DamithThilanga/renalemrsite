@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NCDMS — Nephrology Clinic &amp; Dialysis Management System</title>
+  <meta name="description" content="An open-source OpenMRS-based clinical record and dialysis management system, built for a professorial nephrology unit. Follow progress and contribute." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        NCDMS
+        <span class="brand-sub">OpenMRS Nephrology</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="contribute.html">Contribute</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-eyebrow">Open source · Built on OpenMRS 3</p>
+      <h1>A clinical record and dialysis workflow system for a nephrology unit</h1>
+      <p class="hero-lede">
+        NCDMS extends the OpenMRS platform with nephrology-specific forms, lab
+        trend tracking, and dialysis unit workflows. It is being built openly
+        for a professorial nephrology unit at a university hospital, and
+        designed so other units facing the same paperwork can adapt it too.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="contribute.html">How to contribute</a>
+        <a class="btn btn-secondary" href="architecture.html">See the architecture</a>
+      </div>
+
+      <div class="vitals">
+        <div class="vital">
+          <div class="vital-label">Platform</div>
+          <div class="vital-value">OpenMRS 3</div>
+        </div>
+        <div class="vital">
+          <div class="vital-label">Status</div>
+          <div class="vital-value"><span class="vital-flag attn" aria-hidden="true"></span>Active build</div>
+        </div>
+        <div class="vital">
+          <div class="vital-label">Focus</div>
+          <div class="vital-value">CKD &amp; HD/PD</div>
+        </div>
+        <div class="vital">
+          <div class="vital-label">License</div>
+          <div class="vital-value">Open source</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">Why this exists</p>
+      <h2>Clinic paperwork doesn't have to live in spreadsheets and Google Forms</h2>
+      <div class="grid-2">
+        <div>
+          <p>
+            A busy nephrology and dialysis unit generates a constant stream of
+            structured data: serum creatinine and eGFR trends, dialysis
+            sessions, vascular access details, transplant work-up status, and
+            referral queues. Much of this currently lives across paper charts
+            and ad-hoc digital forms, which makes it hard to track a patient's
+            trajectory or report on the clinic as a whole.
+          </p>
+        </div>
+        <div>
+          <p>
+            NCDMS is an attempt to bring that data into a single record system
+            using OpenMRS, an established open-source electronic health record
+            platform used worldwide. Rather than building a new EHR from
+            scratch, we configure and extend OpenMRS with the specific
+            concepts, forms, and dashboards a nephrology unit needs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">What it does</p>
+      <h2>Three things the system is designed around</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Clinical record</h3>
+          <p>
+            Structured forms for nephrology visits capture lab trends —
+            serum creatinine, eGFR, haemoglobin — with automatic CKD
+            staging, alongside the standard OpenMRS patient record.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Dialysis workflow</h3>
+          <p>
+            Companion modules support the operational side of a dialysis
+            unit: session scheduling, bed/chair allocation, and a
+            priority queue for patients.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Reporting &amp; registry</h3>
+          <p>
+            A foundation for unit-level reporting and registries — useful
+            both for day-to-day clinical decisions and for research and
+            Ministry of Health reporting.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">Get involved</p>
+      <h2>This is a small, openly-built project — and contributions are genuinely useful</h2>
+      <p class="section-intro">
+        Whether you're a clinician who understands nephrology workflows, a
+        developer comfortable with OpenMRS or web technologies, or a health
+        informatics student looking for a real project to learn from, there's
+        a way to help. The <a href="contribute.html">Contribute</a> page has
+        details on where the project stands and what kind of help is most
+        useful right now.
+      </p>
+      <a class="btn btn-primary" href="contribute.html">View contribution pathways</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-text">NCDMS — Nephrology Clinic &amp; Dialysis Management System. Built on OpenMRS.</p>
+      <div class="footer-links">
+        <a href="architecture.html">Architecture</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="contribute.html">Contribute</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

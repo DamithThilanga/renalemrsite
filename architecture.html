@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture — NCDMS</title>
+  <meta name="description" content="How NCDMS is built: OpenMRS 3 as the core EHR, with companion modules for dialysis-specific operational workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        NCDMS
+        <span class="brand-sub">OpenMRS Nephrology</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="architecture.html" aria-current="page">Architecture</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="contribute.html">Contribute</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-eyebrow">How it's built</p>
+      <h1>OpenMRS as the core, custom modules around the edges</h1>
+      <p class="hero-lede">
+        Rather than writing a new EHR, NCDMS configures OpenMRS 3 as the
+        clinical backbone — patients, encounters, observations, the concept
+        dictionary — and adds small companion modules for the operational
+        parts of a dialysis unit that don't fit naturally into a general EHR.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">Core platform</p>
+      <h2>OpenMRS 3 (O3 Reference Application)</h2>
+      <p class="section-intro">
+        The system runs on the OpenMRS 3 Reference Application, deployed via
+        Docker Compose. OpenMRS provides the data model that everything else
+        builds on: a Concept Dictionary for clinical terms, and a
+        Visit → Encounter → Observation hierarchy for recording care over
+        time. Nephrology-specific data — serum creatinine, eGFR, dialysis
+        details, vascular access type — is captured through custom clinical
+        forms built on this foundation, rather than through generic visit
+        notes.
+      </p>
+
+      <ul class="tech-list">
+        <li>OpenMRS 3 (O3 Reference Application)</li>
+        <li>Docker Compose</li>
+        <li>Concept Dictionary (CIEL via OCL)</li>
+        <li>FHIR2 module</li>
+        <li>Custom O3 form schemas (JSON)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">System layout</p>
+      <h2>A hybrid architecture: EHR core plus operational modules</h2>
+      <p class="section-intro">
+        The diagram below is a simplified view. OpenMRS handles the clinical
+        record itself — the parts that need to be standards-aligned and
+        interoperable. Around it, smaller custom modules handle day-to-day
+        unit operations that are specific to this clinic and don't need to
+        live inside the EHR core.
+      </p>
+
+      <div class="arch-diagram">
+        <div class="arch-row">
+          <div class="arch-block core">
+            <div class="arch-title">OpenMRS 3 Core</div>
+            <div class="arch-desc">Patients, providers, visits, encounters, observations, concept dictionary</div>
+          </div>
+        </div>
+        <div class="arch-connector">▲ custom forms &amp; widgets ▲</div>
+        <div class="arch-row">
+          <div class="arch-block">
+            <div class="arch-title">Nephrology forms</div>
+            <div class="arch-desc">Lab trends, eGFR &amp; CKD staging, clinic visit notes</div>
+          </div>
+          <div class="arch-block">
+            <div class="arch-title">Dialysis records</div>
+            <div class="arch-desc">Session details, vascular access, Kt/V, URR</div>
+          </div>
+          <div class="arch-block">
+            <div class="arch-title">Summary dashboards</div>
+            <div class="arch-desc">Patient chart widgets for lab trends &amp; status</div>
+          </div>
+        </div>
+        <div class="arch-connector">▲ companion modules (read/write via REST &amp; DB) ▲</div>
+        <div class="arch-row">
+          <div class="arch-block">
+            <div class="arch-title">Priority queue</div>
+            <div class="arch-desc">Clinic &amp; dialysis unit patient queueing</div>
+          </div>
+          <div class="arch-block">
+            <div class="arch-title">Bed / chair dashboard</div>
+            <div class="arch-desc">Dialysis unit capacity at a glance</div>
+          </div>
+          <div class="arch-block">
+            <div class="arch-title">Scheduling &amp; SMS</div>
+            <div class="arch-desc">Automated session scheduling and reminders</div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        This separation keeps the clinical record itself close to OpenMRS
+        conventions — which matters for long-term maintainability and
+        interoperability — while letting the operational tools evolve faster
+        and more specifically to this unit's needs.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="section-label">Standards</p>
+      <h2>Built on existing health informatics standards where possible</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Terminology</h3>
+          <p>
+            Clinical concepts are sourced from CIEL via OpenConceptLab where
+            available, with LOINC used for laboratory observations and
+            ICD-10 for diagnosis coding aligned to Ministry of Health
+            reporting requirements.
+          </p>
+        </div>
+        <div>
+          <h3>Interoperability</h3>
+          <p>
+            The FHIR2 module is kept enabled, so the underlying clinical data
+            remains exportable in a standard format — important for a system
+            that may eventually need to exchange data with other hospital
+            systems or national health information infrastructure.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-text">NCDMS — Nephrology Clinic &amp; Dialysis Management System. Built on OpenMRS.</p>
+      <div class="footer-links">
+        <a href="architecture.html">Architecture</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="contribute.html">Contribute</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
